@@ -8,7 +8,7 @@
 
 namespace TEMPO
 {
-
+    int sampleRate = 44100;    
 }
 
 #endif // GLOBALS_H
