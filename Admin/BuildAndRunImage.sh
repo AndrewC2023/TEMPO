@@ -1,4 +1,4 @@
-#!/usr/bin/evn bash
+#!/usr/bin/env bash
 set -euo pipefail
 
 # Folder where this script lives
@@ -8,4 +8,6 @@ REPO_ROOT="$(cd -- "$SCRIPT_DIR/.." && pwd)"
 
 cd "$REPO_ROOT"
 docker build -t tempo .
-docker run --rm -it tempo
+
+# Bind-mount the repository into the container so edits are visible immediately
+docker run --rm -it --mount type=bind,source="$(pwd)",target=/workspace/TEMPO -w /workspace/TEMPO tempo
